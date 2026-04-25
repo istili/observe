@@ -13,6 +13,8 @@ dag = DAG(
     schedule='*/2 * * * *',
     catchup=False,
     max_active_runs=1,
+    schedule_interval=None,
+    is_paused_upon_creation=False,
     tags=['batch', 'read-write', 'ikram'],
 )
 
