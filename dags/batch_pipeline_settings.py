@@ -2,6 +2,13 @@ import os
 from datetime import datetime, timedelta
 
 COUNTER_TABLE = 'batch_counter'
+MARKET_FRESHNESS_TABLE = 'market_data_freshness'
+
+MARKETS = [
+    ('tokyo', 'Tokyo'),
+    ('london', 'London'),
+    ('new_york', 'New York'),
+]
 
 # Uses the same Postgres service and credentials as Airflow metadata DB.
 DB_CONFIG = {

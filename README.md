@@ -42,3 +42,6 @@ make up
 	- In Grafana, open **Batch Pipeline Monitoring - Ikram Stili**
 	- Set the time range to **Last 6 hours**
 	- The metrics should appear on the dashboard
+	- Check **Latest Data Timestamp by Market (Age Seconds)**:
+	  - **Green** means the market feed was refreshed within the last 3 minutes
+	  - **Red** means the market feed is stale and needs attention

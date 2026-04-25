@@ -15,15 +15,15 @@
       "gridPos": {"x": 6, "y": 0, "w": 6, "h": 4}
     },
     {
-      "title": "Success Rate (per minute)",
+      "title": "Success Rate (All Runs)",
       "type": "timeseries",
-      "targets": [{"expr": "rate(airflow_ti_successes[5m])"}],
+      "targets": [{"expr": "sum(airflow_ti_successes) / clamp_min(sum(airflow_ti_successes) + sum(airflow_ti_failures), 1)"}],
       "gridPos": {"x": 0, "y": 4, "w": 12, "h": 8}
     },
     {
       "title": "Batch Duration (seconds)",
       "type": "timeseries",
-      "targets": [{"expr": "airflow_ti_duration_seconds_sum"}],
+      "targets": [{"expr": "airflow_ti_finish"}],
       "gridPos": {"x": 0, "y": 12, "w": 12, "h": 8}
     },
     {
@@ -31,6 +31,54 @@
       "type": "timeseries",
       "targets": [{"expr": "rate(airflow_ti_retries_total[5m])"}],
       "gridPos": {"x": 0, "y": 20, "w": 12, "h": 8}
+    },
+    {
+      "title": "Latest Data Timestamp by Market (Age Seconds)",
+      "type": "stat",
+      "targets": [
+        {"expr": "time() - market_last_success_unix_tokyo", "legendFormat": "Tokyo"},
+        {"expr": "time() - market_last_success_unix_london", "legendFormat": "London"},
+        {"expr": "time() - market_last_success_unix_new_york", "legendFormat": "New York"}
+      ],
+      "options": {
+        "reduceOptions": {"calcs": ["lastNotNull"], "fields": "", "values": false},
+        "orientation": "horizontal",
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "red", "value": 180}
+            ]
+          }
+        }
+      },
+      "gridPos": {"x": 0, "y": 28, "w": 12, "h": 6}
+    },
+    {
+      "title": "Task Duration p95 (READ vs INCREMENT vs WRITE)",
+      "type": "timeseries",
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, rate(airflow_ti_duration_seconds_bucket{task_id='read_data'}[5m]))",
+          "legendFormat": "READ (p95)"
+        },
+        {
+          "expr": "histogram_quantile(0.95, rate(airflow_ti_duration_seconds_bucket{task_id='increment_data'}[5m]))",
+          "legendFormat": "INCREMENT (p95)"
+        },
+        {
+          "expr": "histogram_quantile(0.95, rate(airflow_ti_duration_seconds_bucket{task_id='write_data'}[5m]))",
+          "legendFormat": "WRITE (p95)"
+        }
+      ],
+      "gridPos": {"x": 0, "y": 34, "w": 12, "h": 8}
     }
   ]
 }

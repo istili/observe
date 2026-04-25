@@ -1,9 +1,3 @@
-.PHONY: help up down status logs trigger clean
-
-GREEN := \033[0;32m
-RED := \033[0;31m
-NC := \033[0m
-
 help:
 	@echo "$(GREEN)Batch Pipeline Monitoring System$(NC)"
 	@echo ""
@@ -53,3 +47,9 @@ clean:
 	else \
 		echo "$(RED)Cancelled$(NC)"; \
 	fi
+
+.PHONY: help up down status logs trigger clean
+
+GREEN := \033[0;32m
+RED := \033[0;31m
+NC := \033[0m

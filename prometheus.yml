@@ -1,19 +1,14 @@
 # Prometheus Configuration
-# Tells Prometheus WHERE to scrape metrics FROM
-
 global:
-  scrape_interval: 15s      # How often to collect metrics
+  scrape_interval: 15s
   evaluation_interval: 15s
 
 scrape_configs:
-  # Scrape metrics from StatsD exporter (Airflow metrics)
   - job_name: 'statsd-exporter'
     static_configs:
-      - targets: ['statsd-exporter:9102']
+      - targets: ['statsd-exporter:9102'] # Make sure this matches docker-compose service name
     scrape_interval: 15s
     
-  # Scrape Prometheus itself (for health monitoring)
   - job_name: 'prometheus'
     static_configs:
       - targets: ['localhost:9090']
-    scrape_interval: 15s
