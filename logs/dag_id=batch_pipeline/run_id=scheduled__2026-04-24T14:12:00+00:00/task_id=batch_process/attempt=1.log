@@ -1,0 +1,16 @@
+[2026-04-24T14:14:01.059+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: batch_pipeline.batch_process scheduled__2026-04-24T14:12:00+00:00 [queued]>
+[2026-04-24T14:14:01.071+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: batch_pipeline.batch_process scheduled__2026-04-24T14:12:00+00:00 [queued]>
+[2026-04-24T14:14:01.071+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2026-04-24T14:14:01.090+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): batch_process> on 2026-04-24 14:12:00+00:00
+[2026-04-24T14:14:01.096+0000] {standard_task_runner.py:60} INFO - Started process 174 to run task
+[2026-04-24T14:14:01.100+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'batch_pipeline', 'batch_process', 'scheduled__2026-04-24T14:12:00+00:00', '--job-id', '47', '--raw', '--subdir', 'DAGS_FOLDER/batch_pipeline_dag.py', '--cfg-path', '/tmp/tmp30qnlccs']
+[2026-04-24T14:14:01.102+0000] {standard_task_runner.py:88} INFO - Job 47: Subtask batch_process
+[2026-04-24T14:14:01.161+0000] {task_command.py:423} INFO - Running <TaskInstance: batch_pipeline.batch_process scheduled__2026-04-24T14:12:00+00:00 [running]> on host fb4242616230
+[2026-04-24T14:14:01.281+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ikram' AIRFLOW_CTX_DAG_ID='batch_pipeline' AIRFLOW_CTX_TASK_ID='batch_process' AIRFLOW_CTX_EXECUTION_DATE='2026-04-24T14:12:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-04-24T14:12:00+00:00'
+[2026-04-24T14:14:01.282+0000] {logging_mixin.py:188} INFO - 📖 READ from /tmp/batch_counter.txt: value = 14
+[2026-04-24T14:14:01.282+0000] {logging_mixin.py:188} INFO - ⚙️ PROCESS: 14 → 15
+[2026-04-24T14:14:01.283+0000] {logging_mixin.py:188} INFO - 💾 WRITE to /tmp/batch_counter.txt: value = 15
+[2026-04-24T14:14:01.283+0000] {python.py:201} INFO - Done. Returned value was: 15
+[2026-04-24T14:14:01.313+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=batch_pipeline, task_id=batch_process, execution_date=20260424T141200, start_date=20260424T141401, end_date=20260424T141401
+[2026-04-24T14:14:01.354+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-04-24T14:14:01.407+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

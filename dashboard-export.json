@@ -1,0 +1,36 @@
+{
+  "title": "Batch Pipeline - Ikram Stili",
+  "description": "Batch pipeline monitoring: READ → INCREMENT → WRITE",
+  "panels": [
+    {
+      "title": "Total Successes",
+      "type": "stat",
+      "targets": [{"expr": "airflow_ti_successes"}],
+      "gridPos": {"x": 0, "y": 0, "w": 6, "h": 4}
+    },
+    {
+      "title": "Total Failures",
+      "type": "stat",
+      "targets": [{"expr": "airflow_ti_failures"}],
+      "gridPos": {"x": 6, "y": 0, "w": 6, "h": 4}
+    },
+    {
+      "title": "Success Rate (per minute)",
+      "type": "timeseries",
+      "targets": [{"expr": "rate(airflow_ti_successes[5m])"}],
+      "gridPos": {"x": 0, "y": 4, "w": 12, "h": 8}
+    },
+    {
+      "title": "Batch Duration (seconds)",
+      "type": "timeseries",
+      "targets": [{"expr": "airflow_ti_duration_seconds_sum"}],
+      "gridPos": {"x": 0, "y": 12, "w": 12, "h": 8}
+    },
+    {
+      "title": "Task Retries",
+      "type": "timeseries",
+      "targets": [{"expr": "rate(airflow_ti_retries_total[5m])"}],
+      "gridPos": {"x": 0, "y": 20, "w": 12, "h": 8}
+    }
+  ]
+}

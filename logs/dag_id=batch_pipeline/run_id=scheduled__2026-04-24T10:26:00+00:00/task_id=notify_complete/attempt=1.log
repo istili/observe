@@ -1,0 +1,17 @@
+[2026-04-24T10:28:04.407+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: batch_pipeline.notify_complete scheduled__2026-04-24T10:26:00+00:00 [queued]>
+[2026-04-24T10:28:04.421+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: batch_pipeline.notify_complete scheduled__2026-04-24T10:26:00+00:00 [queued]>
+[2026-04-24T10:28:04.421+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2026-04-24T10:28:04.443+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): notify_complete> on 2026-04-24 10:26:00+00:00
+[2026-04-24T10:28:04.451+0000] {standard_task_runner.py:60} INFO - Started process 81 to run task
+[2026-04-24T10:28:04.455+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'batch_pipeline', 'notify_complete', 'scheduled__2026-04-24T10:26:00+00:00', '--job-id', '13', '--raw', '--subdir', 'DAGS_FOLDER/batch_pipeline_dag.py', '--cfg-path', '/tmp/tmpzz164kad']
+[2026-04-24T10:28:04.456+0000] {standard_task_runner.py:88} INFO - Job 13: Subtask notify_complete
+[2026-04-24T10:28:04.519+0000] {task_command.py:423} INFO - Running <TaskInstance: batch_pipeline.notify_complete scheduled__2026-04-24T10:26:00+00:00 [running]> on host 83bfc5140a5b
+[2026-04-24T10:28:04.637+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ikram' AIRFLOW_CTX_DAG_ID='batch_pipeline' AIRFLOW_CTX_TASK_ID='notify_complete' AIRFLOW_CTX_EXECUTION_DATE='2026-04-24T10:26:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-04-24T10:26:00+00:00'
+[2026-04-24T10:28:04.638+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-04-24T10:28:04.639+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'echo "✅ Batch pipeline completed at $(date)"']
+[2026-04-24T10:28:04.656+0000] {subprocess.py:86} INFO - Output:
+[2026-04-24T10:28:04.662+0000] {subprocess.py:93} INFO - ✅ Batch pipeline completed at Fri Apr 24 10:28:04 UTC 2026
+[2026-04-24T10:28:04.663+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2026-04-24T10:28:04.700+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=batch_pipeline, task_id=notify_complete, execution_date=20260424T102600, start_date=20260424T102804, end_date=20260424T102804
+[2026-04-24T10:28:04.747+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-04-24T10:28:04.777+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
