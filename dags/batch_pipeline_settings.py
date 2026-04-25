@@ -1,24 +1,13 @@
-import os
 from datetime import datetime, timedelta
 
-COUNTER_TABLE = 'batch_counter'
-MARKET_FRESHNESS_TABLE = 'market_data_freshness'
-
+# Markets that pipeline processes
 MARKETS = [
     ('tokyo', 'Tokyo'),
     ('london', 'London'),
     ('new_york', 'New York'),
 ]
 
-# Uses the same Postgres service and credentials as Airflow metadata DB.
-DB_CONFIG = {
-    'host': os.getenv('POSTGRES_HOST', 'postgres'),
-    'port': int(os.getenv('POSTGRES_PORT', '5432')),
-    'dbname': os.getenv('POSTGRES_DB', 'airflow'),
-    'user': os.getenv('POSTGRES_USER', 'airflow'),
-    'password': os.getenv('POSTGRES_PASSWORD', 'airflow'),
-}
-
+# Default arguments for all DAG tasks
 DEFAULT_ARGS = {
     'owner': 'ikram',
     'depends_on_past': False,
