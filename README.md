@@ -1,6 +1,6 @@
 # Batch Pipeline Monitoring System
 
-## One Command Setup
+## Getting Started
 
 ### Step 1: Configure Environment (Optional)
 
@@ -13,11 +13,39 @@ cp .env.example .env
 
 If you skip this, defaults will be used (airflow/airflow for all services).
 
-### Step 2: Start Services
+### Step 2: First-Time Setup
+
+After cloning the repo for the first time, run the bootstrap command. This will
+pull all Docker images, run Airflow DB migrations, create the admin user, and
+start all services. The first run may take several minutes while images are
+downloaded.
+
+```bash
+make bootstrap
+```
+
+### Step 3: Subsequent Starts
+
+Once images are pulled and the database is initialized, use the normal start
+command for all subsequent runs:
 
 ```bash
 make up
 ```
+
+## Available Commands
+
+| Command | Description |
+|---|---|
+| `make bootstrap` | **First-time setup**: pull images, initialize Airflow DB, start all services |
+| `make up` | Start all services (fast, for subsequent runs) |
+| `make down` | Stop all services |
+| `make pull` | Pull all Docker images |
+| `make init` | Run Airflow DB migrations and create the admin user |
+| `make status` | Show running container status |
+| `make logs` | Stream logs from all services |
+| `make trigger` | Manually trigger the batch pipeline DAG |
+| `make clean` | Stop all services and remove volumes (full reset) |
 
 ## After Setup
 
